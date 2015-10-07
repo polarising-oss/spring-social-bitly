@@ -4,3 +4,4 @@
 *.mvn
 *.spring*
 **/target*
+/target

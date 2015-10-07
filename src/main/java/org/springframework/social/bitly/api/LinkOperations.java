@@ -1,0 +1,8 @@
+package org.springframework.social.bitly.api;
+
+import java.util.List;
+
+public interface LinkOperations {
+
+	List<Link> expand( List<String> shortUrl, List<String> hash  );
+}

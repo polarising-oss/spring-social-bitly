@@ -6,21 +6,19 @@ import org.springframework.social.oauth2.OAuth2Template;
 
 public class BitlyServiceProvider extends AbstractOAuth2ServiceProvider<Bitly> {
 
-	public BitlyServiceProvider( String clientId, String secretId ) {
-		super( getOAuth2Template( clientId, secretId ));
+	public BitlyServiceProvider( String clientId, String secretId, String username, String password ) {
+		super( getOAuth2Template( clientId, secretId, username, password ));
 	}
 
-	private static OAuth2Template getOAuth2Template(  String clientId, String secretId ) {
+	private static OAuth2Template getOAuth2Template( String clientId, String secretId, String username, String password ) {
 		OAuth2Template oAuth2Template = new OAuth2Template( clientId, secretId,
-				"https://api-ssl.bitly.com/oauth/access_token",
-				"https://api-ssl.bitly.com/oauth/access_token");
-		oAuth2Template.setUseParametersForClientAuthentication( Boolean.FALSE );
+				Bitly.BITLY_OAUTH_URL,
+				Bitly.BITLY_OAUTH_ACCESS_TOKEN_URL );
 		return oAuth2Template;
 	}
 	
 	@Override
 	public Bitly getApi(String accessToken) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
