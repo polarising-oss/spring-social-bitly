@@ -1,7 +1,6 @@
 package org.springframework.social.bitly.api.impl;
 
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.social.support.URIBuilder;
 import org.springframework.util.LinkedMultiValueMap;

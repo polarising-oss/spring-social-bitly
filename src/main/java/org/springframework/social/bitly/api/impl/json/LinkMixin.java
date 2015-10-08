@@ -6,22 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LinkMixin {
 	
-	@JsonProperty
+	@JsonProperty( "short_url" )
 	private String shortUrl;
 	
-	@JsonProperty	
+	@JsonProperty( "hash" )	
 	private String hash;
 	
-	@JsonProperty
+	@JsonProperty( "user_hash" )
 	private String userHash;
 	
-	@JsonProperty
+	@JsonProperty( "global_hash" )
 	private String globalHash;
 	
-	@JsonProperty
+	@JsonProperty( "error" )
 	private String error;
 	
-	@JsonProperty
+	@JsonProperty( "long_url" )
 	private String longUrl;
 
 	public String getShortUrl() {
