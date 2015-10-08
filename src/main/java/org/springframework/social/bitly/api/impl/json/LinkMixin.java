@@ -1,7 +1,12 @@
 package org.springframework.social.bitly.api.impl.json;
 
+import java.util.Date;
+
+import org.springframework.social.bitly.api.impl.json.deserializers.EpochTimestampDeserializer;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LinkMixin {
@@ -24,6 +29,16 @@ public class LinkMixin {
 	@JsonProperty( "long_url" )
 	private String longUrl;
 
+	@JsonProperty( "created_at" )
+	@JsonDeserialize(using=EpochTimestampDeserializer.class)
+	private Date createdAt;
+	
+	@JsonProperty( "created_by" )
+	private String createdBy;
+	
+	@JsonProperty( "title" )
+	private String title;
+	
 	public String getShortUrl() {
 		return shortUrl;
 	}
@@ -71,4 +86,30 @@ public class LinkMixin {
 	public void setLongUrl(String longUrl) {
 		this.longUrl = longUrl;
 	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	
 }

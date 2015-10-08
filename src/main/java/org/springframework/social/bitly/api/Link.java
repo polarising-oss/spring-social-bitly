@@ -1,5 +1,7 @@
 package org.springframework.social.bitly.api;
 
+import java.util.Date;
+
 
 /**
  * 
@@ -20,6 +22,13 @@ public class Link extends BitlyObject {
 	
 	private String longUrl;
 
+	private Date createdAt;
+	
+	private String createdBy;
+	
+	private String title;
+	 
+    	
 	public String getShortUrl() {
 		return shortUrl;
 	}
@@ -67,5 +76,31 @@ public class Link extends BitlyObject {
 	public void setLongUrl(String longUrl) {
 		this.longUrl = longUrl;
 	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	
 
 }
