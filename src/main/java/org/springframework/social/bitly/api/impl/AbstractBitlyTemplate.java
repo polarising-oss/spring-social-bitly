@@ -3,6 +3,7 @@ package org.springframework.social.bitly.api.impl;
 import java.net.URI;
 import java.util.List;
 
+import org.springframework.social.bitly.api.NewBitlyResponse;
 import org.springframework.social.bitly.api.impl.json.BitlyResponse;
 import org.springframework.social.bitly.api.impl.json.ListResponse;
 import org.springframework.social.support.URIBuilder;
@@ -43,5 +44,10 @@ public abstract class AbstractBitlyTemplate {
 	protected <T> List<T> invoke( String uri, MultiValueMap<String, String> parameters, Class<? extends BitlyResponse > responseClass ){
 		BitlyResponse response = (BitlyResponse) restTemplate.getForObject( buildUri( uri, parameters ), responseClass );
 		return parseListResponse(response);
+	}
+	
+	protected <T> NewBitlyResponse<T> invoke2( String uri, MultiValueMap<String, String> parameters, Class<? extends NewBitlyResponse<T>> responseClass ){
+		NewBitlyResponse<T> response = (NewBitlyResponse<T>) restTemplate.getForObject( buildUri( uri, parameters ), responseClass );
+		return response;
 	}
 }

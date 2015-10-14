@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.social.bitly.api.Link;
 import org.springframework.social.bitly.api.LinkOperations;
+import org.springframework.social.bitly.api.NewBitlyResponse;
 import org.springframework.social.bitly.api.impl.json.LinkExpandResponse;
 import org.springframework.social.bitly.api.impl.json.LinkInfoResponse;
+import org.springframework.social.bitly.api.impl.json.LinkInfoResponse2;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -33,5 +35,10 @@ public class LinkTemplate extends AbstractBitlyTemplate implements LinkOperation
 	@Override
 	public List<Link> info(List<String> shortUrl, List<String> hash) {
 		return invoke("info", buildShortUrlHashMap(shortUrl, hash), LinkInfoResponse.class );
+	}
+
+	@Override
+	public LinkInfoResponse2 expand2(List<String> shortUrl, List<String> hash) {
+		return (LinkInfoResponse2) invoke2("info", buildShortUrlHashMap(shortUrl, hash), LinkInfoResponse2.class );
 	}
 }
