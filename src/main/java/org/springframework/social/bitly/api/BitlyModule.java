@@ -1,5 +1,6 @@
 package org.springframework.social.bitly.api;
 
+import org.springframework.social.bitly.api.impl.json.LinkLookupMixin;
 import org.springframework.social.bitly.api.impl.json.LinkMixin;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -14,5 +15,6 @@ public class BitlyModule extends SimpleModule{
 	@Override
 	public void setupModule(SetupContext context) {
 		context.setMixInAnnotations(Link.class, LinkMixin.class);
+		context.setMixInAnnotations(LinkLookup.class, LinkLookupMixin.class);
 	}
 }

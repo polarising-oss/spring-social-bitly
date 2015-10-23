@@ -9,4 +9,6 @@ public interface LinkOperations {
 	BitlyResponse<List<Link>> expand( List<String> shortUrl, List<String> hash  );
 	
 	BitlyResponse<List<Link>> info( List<String> shortUrl, List<String> hash  );
+	
+	BitlyResponse<List<LinkLookup>> lookup( List<String> shortUrl );
 }

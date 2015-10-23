@@ -2,7 +2,6 @@ package org.springframework.social.bitly.api;
 
 import java.util.Date;
 
-
 /**
  * 
  * @author bramos
