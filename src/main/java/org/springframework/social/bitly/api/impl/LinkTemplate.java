@@ -2,12 +2,9 @@ package org.springframework.social.bitly.api.impl;
 
 import java.util.List;
 
-import org.springframework.social.bitly.api.Link;
 import org.springframework.social.bitly.api.LinkOperations;
-import org.springframework.social.bitly.api.NewBitlyResponse;
 import org.springframework.social.bitly.api.impl.json.LinkExpandResponse;
 import org.springframework.social.bitly.api.impl.json.LinkInfoResponse;
-import org.springframework.social.bitly.api.impl.json.LinkInfoResponse2;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -25,20 +22,14 @@ public class LinkTemplate extends AbstractBitlyTemplate implements LinkOperation
 		parameters.put( "hash", hash );
 		return parameters;
 	}
-		
 	
 	@Override
-	public List<Link> expand(List<String> shortUrl, List<String> hash) {	
-		return invoke("expand", buildShortUrlHashMap(shortUrl, hash), LinkExpandResponse.class );
+	public LinkExpandResponse expand(List<String> shortUrl, List<String> hash) {	
+		return (LinkExpandResponse) invoke("expand", buildShortUrlHashMap(shortUrl, hash), LinkExpandResponse.class );
 	}	
 	
 	@Override
-	public List<Link> info(List<String> shortUrl, List<String> hash) {
-		return invoke("info", buildShortUrlHashMap(shortUrl, hash), LinkInfoResponse.class );
-	}
-
-	@Override
-	public LinkInfoResponse2 expand2(List<String> shortUrl, List<String> hash) {
-		return (LinkInfoResponse2) invoke2("info", buildShortUrlHashMap(shortUrl, hash), LinkInfoResponse2.class );
+	public LinkInfoResponse info(List<String> shortUrl, List<String> hash) {
+		return (LinkInfoResponse) invoke("info", buildShortUrlHashMap(shortUrl, hash), LinkInfoResponse.class );
 	}
 }

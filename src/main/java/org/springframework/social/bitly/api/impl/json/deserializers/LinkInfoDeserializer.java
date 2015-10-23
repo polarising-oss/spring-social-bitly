@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.social.bitly.api.BitlyModule;
 import org.springframework.social.bitly.api.Link;
-import org.springframework.social.bitly.api.impl.json.LinkInfoResponse2;
+import org.springframework.social.bitly.api.impl.json.LinkInfoResponse;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -15,11 +15,11 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class LinkInfoDeserializer extends JsonDeserializer<LinkInfoResponse2> {
+public class LinkInfoDeserializer extends JsonDeserializer<LinkInfoResponse> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public LinkInfoResponse2 deserialize(JsonParser jp, DeserializationContext context) throws IOException, JsonProcessingException {
+	public LinkInfoResponse deserialize(JsonParser jp, DeserializationContext context) throws IOException, JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.registerModule(new BitlyModule());
 		jp.setCodec(mapper);
@@ -28,7 +28,7 @@ public class LinkInfoDeserializer extends JsonDeserializer<LinkInfoResponse2> {
 		JsonNode jsonNode = node.get("data");
 		List<Link> readValue = mapper.reader(new TypeReference<List<Link>>() {}).readValue(jsonNode.get("info"));
 		//LinkInfoResponse2 readValue = (LinkInfoResponse2) mapper.reader(new TypeReference<LinkInfoResponse2>() {}).readValue(node);
-		LinkInfoResponse2 response = new LinkInfoResponse2();
+		LinkInfoResponse response = new LinkInfoResponse();
 		response.setData(readValue);
 		
 		return response;

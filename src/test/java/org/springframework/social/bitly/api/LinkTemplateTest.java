@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.springframework.social.bitly.api.impl.BitlyTemplate;
 import org.springframework.social.bitly.api.impl.LinkTemplate;
-import org.springframework.social.bitly.api.impl.json.LinkInfoResponse2;
+import org.springframework.social.bitly.api.impl.json.LinkInfoResponse;
 import org.springframework.util.Assert;
 
 @RunWith( BlockJUnit4ClassRunner.class )
@@ -51,7 +51,7 @@ public class LinkTemplateTest {
 	
 	@Test
 	public void expand2(){
-		LinkInfoResponse2 links = linkTemplate.expand2( Arrays.asList( BIT_LINK ), Arrays.asList( "sQRdoJ" ) );
+		LinkInfoResponse links = linkTemplate.expand2( Arrays.asList( BIT_LINK ), Arrays.asList( "sQRdoJ" ) );
 		List<Link> data = links.getData();
 		for (Link link : data) {
 			Assert.notNull( link.getGlobalHash() );
